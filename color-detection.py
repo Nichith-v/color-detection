@@ -1,11 +1,13 @@
+import argparse
 import cv2
 import pandas as pd
 
-# Image file Path
-image_path = r'myimg.jpg'
-
-# Read the image
-image = cv2.imread(image_path)
+ap = argparse.ArgumentParser()
+ap.add_argument('-i', '--image', required=True, help="Image Path")
+args = vars(ap.parse_args())
+img_path = args['image']
+#Reading image with opencv
+image = cv2.imread(img_path)
 
 clicked = False
 red = green = blue = x_position = y_position = 0
